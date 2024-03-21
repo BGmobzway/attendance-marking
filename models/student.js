@@ -16,7 +16,7 @@ const studentSchema = new mongoose.Schema({
         },
         subName: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'subject',
+            ref: 'Subject',
             required: true
         }
     }]
