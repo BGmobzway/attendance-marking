@@ -14,8 +14,8 @@ password: {
 },
 subName: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Subject',
-    required: true
+    ref: 'Subject'
+    
 }
 })
 module.exports = model('Teacher', teacherSchema)
