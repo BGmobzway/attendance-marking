@@ -7,3 +7,5 @@ const attendanceSchema = new Schema({
 });
 
 module.exports = model('Attendance', attendanceSchema)
+
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmMzYzU0MGU2MjY4ZGNmOGFkYjUzYiIsImVtYWlsIjoiYmhhdmVzaEBnbWFpbC5jb20iLCJpYXQiOjE3MTEwODc5NzksImV4cCI6MTcxMTA5MTU3OX0.W6hcy_U598cuXq0baqGacEqifIh-0aAjnb8g4UQCmIY
