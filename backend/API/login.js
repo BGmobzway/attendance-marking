@@ -45,3 +45,11 @@ exports.signup = async (req, res) => {
         res.send(error)
     }
 }
+exports.getTeachers = async(req, res) => {
+    try {
+        const allTeachers = await Teacher.find({})
+        return res.status(200).json({message: "All teachers information", teachers: allTeachers})
+    } catch (error) {
+        res.send(error)
+    }
+}

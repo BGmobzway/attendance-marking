@@ -1,6 +1,6 @@
 // components/Signup.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export const Signup = () => {
@@ -8,6 +8,8 @@ export const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  
+
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +25,9 @@ export const Signup = () => {
       }
       console.log(process.env.API_URL)
       const response = await axios(configurationsignup)
+      const token = response.data.token;
+      localStorage.setItem('token', token)
+      console.log('local storage', token)
       console.log(response, 'signupchecking')
     } catch (error) {
       setMessage(error.response.data.message);
