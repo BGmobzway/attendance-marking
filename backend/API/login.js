@@ -1,6 +1,7 @@
 const Teacher = require('../models/teachers')
 const bcrypt = require('bcryptjs')
 const authorisations = require('../middleware/jwt')
+const Subject = require('../models/subjects')
 
 
 
@@ -27,22 +28,30 @@ exports.login = async (req, res) => {
 }
 exports.signup = async (req, res) => {
     try {
-
-        let { name, email, password } = req.body;
-        const hashedPassword = await bcrypt.hash(password, 10)
-        const newTeacher = new Teacher({
-            name: name,
-            email: email,
-            password: hashedPassword
-        })
-
-
+        let { name, email, password, subjects } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        
+        // Create a new teacher
+        const newTeacher = new Teacher({ name, email, password: hashedPassword });
         await newTeacher.save();
-        const token = authorisations.generateToken(newTeacher)
 
-        res.send({ message: "New Teacher created successfully", teacher: newTeacher, token: token })
+        // Save the subjects taught by the teacher
+        // if (subjects && subjects.length > 0) {
+        //     const subjectIds = await Promise.all(subjects.map(async (subjectName) => {
+        //         const newSubject = new Subject({ subjectname: subjectName, teacher: newTeacher._id });
+        //         await newSubject.save();
+        //         return newSubject._id;
+        //     }));
+        //     newTeacher.subjects = subjectIds;
+        //     await newTeacher.save();
+        // }
+
+        const token = authorisations.generateToken(newTeacher);
+
+        res.send({ message: "New Teacher created successfully", teacher: newTeacher, token: token });
     } catch (error) {
-        res.send(error)
+        console.error(error);
+        res.status(500).json({ message: "Failed to create teacher", error: error.message });
     }
 }
 exports.getTeachers = async(req, res) => {

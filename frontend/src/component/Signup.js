@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom'
 
 export const Signup = () => {
+  const history= useNavigate()
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,8 +29,9 @@ export const Signup = () => {
       const response = await axios(configurationsignup)
       const token = response.data.token;
       localStorage.setItem('token', token)
-      console.log('local storage', token)
+      console.log('local storage:', token)
       console.log(response, 'signupchecking')
+      history('/dashboard');
     } catch (error) {
       setMessage(error.response.data.message);
     }

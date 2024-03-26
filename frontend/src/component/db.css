@@ -1,0 +1,19 @@
+.class-button {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white; /* White text */
+    padding: 20px 40px; /* Padding to make the button larger */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px; /* Rounded corners */
+    display: block;
+    width: 200px; /* Adjust button width as needed */
+  }
+  
+  .class-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }

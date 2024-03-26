@@ -31,13 +31,13 @@ password: {
             
             message: "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character"
         }
-},
-           
-subName: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Subject'
-    
 }
+           
+// subName: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'Subject'
+    
+// }
 })
 teacherSchema.pre("save", hashPassword)
 module.exports = model('Teacher', teacherSchema)

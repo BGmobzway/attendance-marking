@@ -21,3 +21,11 @@ exports.addStudent = async (req, res) => {
         res.status(500).json({ message: "Failed to add student", error: error.message });
     }
 };
+exports.getStudent = async (req,res) => {
+    try {
+        const students = await Student.find({ classname: req.params.classId });
+        res.status(200).json({ students: students });
+      } catch (error) {
+        res.status(500).json({ message: "Failed to fetch students", error: error.message });
+      }
+}
